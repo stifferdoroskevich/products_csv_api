@@ -1,0 +1,64 @@
+
+Mongo + Flask
+https://flask.palletsprojects.com/en/1.1.x/patterns/mongoengine/
+http://docs.mongoengine.org/tutorial.html
+
+
+Clean architecture
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xv-a-better-application-structure
+
+Flask Patterns code
+https://github.com/nickjj/build-a-saas-app-with-flask
+
+Docker-Flask Example
+https://github.com/nickjj/docker-flask-example
+
+
+Course Full SaaS - 59 USD - Python, HTML, CSS and JavaScript
+https://buildasaasappwithflask.com/?utm_source=github&utm_medium=bsawf&utm_campaign=readme-bottom#enroll.
+
+
+DOCKER Mongo
+docker pull mongo:4.4.6
+docker run --name mongo_local -d mongo:4.4.6
+
+docker run -d --network some-network --name mongo_local \
+    -e MONGO_INITDB_ROOT_USERNAME=eiprice \
+    -e MONGO_INITDB_ROOT_PASSWORD=contratado \
+    mongo:4.4.6
+    
+docker run -d --name mongo_local \
+    -e MONGO_INITDB_ROOT_USERNAME=eiprice \
+    -e MONGO_INITDB_ROOT_PASSWORD=contratadod \
+    mongo:4.4.6
+
+Run Shell Mongo /Docker
+docker exec -it mongo_local /bin/bash
+// Enter into mongo shell
+$ mongo
+
+// Switch to admin database
+$> use admin
+$> db.auth("username", passwordPrompt())
+$> show databases
+
+
+
+DOCKER PROBLEM FEDORA
+To debug docker
+dockerd 
+
+TO Clean
+Delete everything in /var/lib/docker. This will delete exiting container and images:
+rm -rf /var/lib/docker
+
+Bug from Docker already bound to a zone (Solution)
+https://bugzilla.redhat.com/show_bug.cgi?id=1829090
+firewall-cmd --get-active-zones
+
+Delete the trusted file, and restart firewalld service, then start docker
+rm /etc/firewalld/zones/trusted.xml"
+sudo systemctl stop firewalld
+sudo systemctl start firewalld
+
+
