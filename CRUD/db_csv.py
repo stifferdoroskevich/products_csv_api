@@ -21,7 +21,7 @@ def insert_csv_data(collection, filename):
             for field in header:
                 row[field]=each[field]
 
-            collection.insert(row)
+            collection.insert_one(row)
 
 
 #create a dabase + collection

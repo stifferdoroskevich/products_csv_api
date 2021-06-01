@@ -4,6 +4,9 @@ https://flask.palletsprojects.com/en/1.1.x/patterns/mongoengine/
 http://docs.mongoengine.org/tutorial.html
 
 
+Mongo return without ObjectID
+https://www.tutorialspoint.com/can-we-remove-id-from-mongodb-query-result
+
 Clean architecture
 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xv-a-better-application-structure
 

@@ -9,13 +9,13 @@ def root():
     return 'API ROOT'
 
 
-@app.route("/databases", methods=['GET'])
+@app.route("/databases/", methods=['GET'])
 def database_list():
     result = db_read.databases()
     return str(result)
 
 
-@app.route("/stores", methods=['GET'])
+@app.route('/stores/', methods=['GET'])
 def stores():
     return db_read.all_stores()
 
@@ -28,6 +28,13 @@ def get_products_by_ean(ean):
 @app.route('/products/', methods=['GET'])
 def get_products():
     return db_read.get_products()
+
+# total productos
+# total productos en promocion
+# total de categorias
+@app.route('/header/', methods=['GET'])
+def get_header():
+    return db_read.get_header()
 
 
 
