@@ -1,4 +1,5 @@
-from flask import Response
+from flask import Response, request
+from pymongo import ASCENDING
 from connect import Connect
 from bson.json_util import dumps, loads
 
@@ -15,24 +16,30 @@ def all_stores():
 
 def get_products_by_ean(ean):
     collection = client['price_analytics']['products']
-    if ean:
-        products = collection.find({'ean': ean})
-    else:
-        products = collection.find({})
+    products = collection.find({'ean': ean})
     result = dumps(products)
+
     return Response(result, mimetype="application/json")
 
 
 def get_products():
-    return get_products_by_ean({})
+    collection = client['price_analytics']['products']
+    
+    limit = int(request.args.get('limit', 0))
+    offset = int(request.args.get('offset', 0))
 
-#"total_products":50,
-#"total_promotions":30,
-#"total_categories":20,
+    #offset preparation 
+    first_product = collection.find().sort('_id', ASCENDING)[offset]
+    starting_id = first_product['_id']
+
+    products = collection.find({'_id' : {'$gte' : starting_id}}).sort('_id', ASCENDING).limit(limit)
+    result = dumps(products)
+    return Response(result, mimetype="application/json")
+
+
 def get_header():
     collection = client['price_analytics']['products']
     total_products = collection.count_documents({})
-    #products list(cursor) in promotion 
     total_promotions = collection.find({'$expr':{'$gt':["$real_price", "$price"]}})
     total_categories = len(collection.distinct('category'))
     products = list(collection.find({},{'_id':0}))

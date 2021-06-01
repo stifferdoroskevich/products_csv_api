@@ -25,13 +25,11 @@ def get_products_by_ean(ean):
     return db_read.get_products_by_ean(ean)
 
 
-@app.route('/products/', methods=['GET'])
+@app.route('/products', strict_slashes=False, methods=['GET'])
 def get_products():
     return db_read.get_products()
 
-# total productos
-# total productos en promocion
-# total de categorias
+
 @app.route('/header/', methods=['GET'])
 def get_header():
     return db_read.get_header()
