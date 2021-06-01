@@ -20,5 +20,16 @@ def stores():
     return db_read.all_stores()
 
 
+@app.route('/products/<ean>', methods=['GET'])
+def get_products_by_ean(ean):
+    return db_read.get_products_by_ean(ean)
+
+
+@app.route('/products/', methods=['GET'])
+def get_products():
+    return db_read.get_products()
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)

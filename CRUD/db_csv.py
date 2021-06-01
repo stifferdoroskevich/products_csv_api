@@ -29,7 +29,7 @@ def create_db():
     db = client['price_analytics']
     
     collection = db['stores']
-    insert_csv_data(collection, 'store_v1(small).csv')
+    insert_csv_data(collection, 'store_v1.csv')
 
     collection = db['products']
     insert_csv_data(collection, 'products_v1(small).csv')

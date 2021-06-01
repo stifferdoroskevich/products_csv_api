@@ -1,3 +1,4 @@
+from flask import Response
 from pymongo import collection
 from connect import Connect
 import json
@@ -12,6 +13,20 @@ def all_stores():
     col_results = json.loads(dumps(collection.find().limit(0).sort("time", -1)))
     result = json.dumps(col_results, indent=2)
     return result
+
+
+def get_products_by_ean(ean):
+    collection = client['price_analytics']['products']
+    if ean:
+        products = collection.find({'ean': ean})
+    else:
+        products = collection.find({})
+    response = dumps(products)
+    return Response(response, mimetype="application/json")
+
+
+def get_products():
+    return get_products_by_ean({})
 
 
 def databases():
