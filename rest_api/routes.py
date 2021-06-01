@@ -1,7 +1,6 @@
-from flask import Flask, redirect, url_for
-from CRUD import db_read
+from rest_api import app, core
+from flask import redirect, url_for
 
-app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def index():
@@ -23,23 +22,21 @@ def api():
 
 @app.route('/api/v1/stores/', methods=['GET'])
 def stores():
-    return db_read.all_stores()
+    return core.all_stores()
 
 
 @app.route('/api/v1/products/<ean>', methods=['GET'])
 def get_products_by_ean(ean):
-    return db_read.get_products_by_ean(ean)
+    return core.get_products_by_ean(ean)
 
 
 @app.route('/api/v1/products', strict_slashes=False, methods=['GET'])
 def get_products():
-    return db_read.get_products()
+    return core.get_products()
 
 
 @app.route('/api/v1/analytics', strict_slashes=False, methods=['GET'])
 def get_header():
-    return db_read.get_header()
+    return core.get_header()
 
 
-if __name__ == '__main__':
-    app.run(debug=True)

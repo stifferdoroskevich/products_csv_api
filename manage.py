@@ -1,16 +1,16 @@
 from flask_script import Manager
-from CRUD import db_csv
-from app import app
+from rest_api import ingest
+from rest_api import app
 
 manager = Manager(app)
 
 @manager.command
 def init_db():
-    db_csv.init_db()
+    ingest.init_db()
 
 @manager.command
 def drop_db():
-    db_csv.drop_db()
+    ingest.drop_db()
 
 
 if __name__ == "__main__":

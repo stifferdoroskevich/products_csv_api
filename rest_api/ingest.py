@@ -1,10 +1,10 @@
-from connect import Connect
+from rest_api import client
 import csv
 import os
 
 
 #get connection
-client = Connect.get_connection()
+#client = Connect.get_connection()
 
 def drop_db():
     client.drop_database('price_analytics')
@@ -42,4 +42,4 @@ def init_db():
     insert_csv_data(collection, 'store_v1.csv')
 
     collection = db['products']
-    insert_csv_data(collection, 'products_v1(small).csv')
+    insert_csv_data(collection, 'products_v1.csv')
