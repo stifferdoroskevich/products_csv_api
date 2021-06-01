@@ -25,15 +25,15 @@ def get_products_by_ean(ean):
 def get_products():
     collection = client['price_analytics']['products']
     
-    limit = int(request.args.get('limit', 0))
+    limit_ = int(request.args.get('limit', 0))
     offset = int(request.args.get('offset', 0))
 
-    #offset preparation 
-    first_product = collection.find().sort('_id', ASCENDING)[offset]
-    starting_id = first_product['_id']
+    ean = request.args.get('ean')
+    category = (request.args.get('category'))
 
-    products = collection.find({'_id' : {'$gte' : starting_id}}).sort('_id', ASCENDING).limit(limit)
+    products = collection.find().sort('_id', ASCENDING).skip(offset).limit(limit_)
     result = dumps(products)
+
     return Response(result, mimetype="application/json")
 
 

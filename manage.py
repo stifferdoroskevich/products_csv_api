@@ -6,7 +6,7 @@ manager = Manager(app)
 
 @manager.command
 def init_db():
-    db_csv.create_db()
+    db_csv.init_db()
 
 @manager.command
 def drop_db():

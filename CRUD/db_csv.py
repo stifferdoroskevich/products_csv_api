@@ -20,7 +20,7 @@ def insert_csv_data(collection, filename):
             row = {}
             discount = 0.0
             
-            # if is product, creat a discount field
+            # if is a product, creat a discount field
             if 'product' in filename:
                 real_price = float(each['real_price'].replace(',', '.'))
                 price = float(each['price'].replace(',', '.'))
@@ -35,7 +35,7 @@ def insert_csv_data(collection, filename):
 
 
 #create a dabase + collection
-def create_db():
+def init_db():
     db = client['price_analytics']
     
     collection = db['stores']

@@ -6,8 +6,8 @@ API FIlter (?limit=&offset=)
 -> https://www.youtube.com/watch?v=Lnt6JqtzM7I
 -> https://flask.palletsprojects.com/en/2.0.x/quickstart/#routing
 
-
-
+Filter - Query
+https://developerslogblog.wordpress.com/2019/10/15/mongodb-how-to-filter-by-multiple-fields/
 
 
 Mongo return without ObjectID
