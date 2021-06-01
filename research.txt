@@ -2,6 +2,12 @@
 Mongo + Flask
 https://flask.palletsprojects.com/en/1.1.x/patterns/mongoengine/
 http://docs.mongoengine.org/tutorial.html
+API FIlter (?limit=&offset=) 
+-> https://www.youtube.com/watch?v=Lnt6JqtzM7I
+-> https://flask.palletsprojects.com/en/2.0.x/quickstart/#routing
+
+
+
 
 
 Mongo return without ObjectID

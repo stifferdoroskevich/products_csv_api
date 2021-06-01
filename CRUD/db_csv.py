@@ -17,7 +17,17 @@ def insert_csv_data(collection, filename):
         header = reader.fieldnames
 
         for each in reader:
-            row={}
+            row = {}
+            discount = 0.0
+            
+            # if is product, creat a discount field
+            if 'product' in filename:
+                real_price = float(each['real_price'].replace(',', '.'))
+                price = float(each['price'].replace(',', '.'))
+
+                discount =  real_price - price
+                row['discount'] = round(discount, 2)
+
             for field in header:
                 row[field]=each[field]
 

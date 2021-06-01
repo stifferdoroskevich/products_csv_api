@@ -9,12 +9,6 @@ def root():
     return 'API ROOT'
 
 
-@app.route("/databases/", methods=['GET'])
-def database_list():
-    result = db_read.databases()
-    return str(result)
-
-
 @app.route('/stores/', methods=['GET'])
 def stores():
     return db_read.all_stores()
@@ -30,7 +24,7 @@ def get_products():
     return db_read.get_products()
 
 
-@app.route('/header/', methods=['GET'])
+@app.route('/analytics', strict_slashes=False, methods=['GET'])
 def get_header():
     return db_read.get_header()
 

@@ -39,13 +39,12 @@ def get_products():
 
 def get_header():
     collection = client['price_analytics']['products']
+    
     total_products = collection.count_documents({})
-    total_promotions = collection.find({'$expr':{'$gt':["$real_price", "$price"]}})
+    total_promotions = collection.count_documents({'$expr':{'$gt':["$discount", 0]}})
     total_categories = len(collection.distinct('category'))
     products = list(collection.find({},{'_id':0}))
-    c = 0
-    for n in total_promotions:
-        c += 1
-    header = {"total_products": total_products, "total_promotions":c, "total_categories": total_categories, "products":products}
+
+    header = {"total_products": total_products, "total_promotions":total_promotions, "total_categories": total_categories, "products":products}
     return header
 
