@@ -4,9 +4,14 @@ FIRST
 docker pull mongo:4.4.6
 
 docker run -d --name mongo_local -p 27017:27017 \
+    -v mongo \
+    --network api_network \ 
     -e MONGO_INITDB_ROOT_USERNAME=eiprice \
     -e MONGO_INITDB_ROOT_PASSWORD=contratado \
     mongo:4.4.6
+
+docker run -d --name mongo_local2 -p 27017:27017 -v mongo --network api_network -e MONGO_INITDB_ROOT_USERNAME=eiprice -e MONGO_INITDB_ROOT_PASSWORD=contratado mongo:4.4.6
+
 
 docker start mongo_local
 
