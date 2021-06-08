@@ -1,0 +1,30 @@
+version: '3.6'
+
+services:
+    api:
+        image: stifferdo/eiprice_api
+        environment: 
+            - MONGO_HOST=mongo
+            - MONGO_USER=eiprice
+            - MONGO_PASSWORD=contratado
+        ports:
+            - 5000:5000
+        networks: 
+            - backend
+        depends_on: 
+            - mongo
+
+    mongo:
+        image: mongo:4.4.6
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=eiprice
+            - MONGO_INITDB_ROOT_PASSWORD=contratado
+        volumes:
+            - /app
+        networks: 
+            - backend
+        ports:
+            - 27017:27017
+
+networks: 
+    backend:
