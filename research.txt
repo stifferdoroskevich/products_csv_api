@@ -70,3 +70,19 @@ rm /etc/firewalld/zones/trusted.xml"
 sudo systemctl stop firewalld
 sudo systemctl start firewalld
 
+ELIMINAR TODOS LOS CONTAINERS PARADOS
+docker ps -aq | xargs docker rm -f
+
+Push IMAGE DOCKER
+docker tag products_csv_api_api:latest  stifferdo/eiprice_api
+docker push stifferdo
+
+Comando incompleto - pesquisar, para ejecutar 
+https://docs.docker.com/compose/reference/run/
+docker-compose run api manage.py init_db
+
+
+DOCKER COMPOSE CONDICIONAL
+Para ejecutar vers PROD y DEV
+Actualmente tenemos 2 archivos compose independientes.
+https://docs.docker.com/compose/extends/
