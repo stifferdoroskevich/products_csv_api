@@ -3,18 +3,21 @@ version: '3.6'
 services:
     api:
         build: .
+        environment: 
+            - MONGO_HOST=mongo
+            - MONGO_USER=eiprice
+            - MONGO_PASSWORD=contratado
         ports:
             - 5000:5000
         volumes:
             - .:/app
         networks: 
             - backend
-        links:
-            - db
+        depends_on: 
+            - mongo
 
-    db:
+    mongo:
         image: mongo:4.4.6
-        hostname: mongo_composed
         environment:
             - MONGO_INITDB_ROOT_USERNAME=eiprice
             - MONGO_INITDB_ROOT_PASSWORD=contratado
