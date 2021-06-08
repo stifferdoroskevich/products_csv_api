@@ -2,6 +2,7 @@ version: '3.6'
 
 services:
     api:
+        image: stifferdo/eiprice_api
         build: .
         environment: 
             - MONGO_HOST=mongo
